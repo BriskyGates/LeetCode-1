@@ -109,7 +109,7 @@ if __name__ == "__main__":
     # creat 2 linked lists
     ListNode_1 = ListNode_handle()
     l1 = ListNode()
-    l1_list = [1,8]
+    l1_list = [1,8,3]
     for i in l1_list:
         l1 = ListNode_1.add(i)
 
@@ -122,6 +122,7 @@ if __name__ == "__main__":
     l1 = ListNode_1._reverse(l1)
     l2 = ListNode_2._reverse(l2)
 
+    ListNode_1.print_ListNode(l1)
     #get result
     result = Solution().addTwoNumbers(l1, l2)
     print result
