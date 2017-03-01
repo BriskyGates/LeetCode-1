@@ -6,6 +6,8 @@ Copyright (c) 2017 Xu Zhihao (Howe).  All rights reserved.
 This program is free software; you can redistribute it and/or modify
 
 """
+import time
+
 carray = False
 
 # Definition for singly-linked list.
@@ -105,6 +107,25 @@ class Solution(object):
         result_handle.print_ListNode(result)
         return result_list
 
+
+class Solution1:
+# @return a ListNode
+def addTwoNumbers(self, l1, l2):
+    carry = 0
+    root = n = ListNode(0)
+    while l1 or l2 or carry:
+        v1 = v2 = 0
+        if l1:
+            v1 = l1.val
+            l1 = l1.next
+        if l2:
+            v2 = l2.val
+            l2 = l2.next
+        carry, val = divmod(v1+v2+carry, 10)
+        n.next = ListNode(val)
+        n = n.next
+    return root.next
+
 if __name__ == "__main__":
     # creat 2 linked lists
     ListNode_1 = ListNode_handle()
@@ -124,5 +145,12 @@ if __name__ == "__main__":
 
     ListNode_1.print_ListNode(l1)
     #get result
+    now = time.time()
     result = Solution().addTwoNumbers(l1, l2)
+    print time.time()-now
+    print result
+
+    now1 = time.time()
+    result = Solution1().addTwoNumbers(l1, l2)
+    print time.time()-now
     print result
