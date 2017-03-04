@@ -30,7 +30,7 @@ class ListNode_handle:
 
     def print_ListNode(self, node):
         while node:
-            # print '\nnode: ', node, ' value: ', node.val, ' next: ', node.next
+            print '\nnode: ', node, ' value: ', node.val, ' next: ', node.next
             node = node.next
 
 
@@ -111,7 +111,7 @@ class Solution1:
     def addTwoNumbers(self, l1, l2):
         carry = 0
         root = n = ListNode1(0)
-        print 'root: ', root
+        # print 'root: ', root.val, root.next
         while l1 or l2 or carry:
             v1 = v2 = 0
             if l1:
@@ -123,20 +123,19 @@ class Solution1:
             carry, val = divmod(v1+v2+carry, 10)
             n.next = ListNode1(val)
             n = n.next
-            print 'root: ',root
-        return root.next
+        return root
 
 if __name__ == "__main__":
     # creat 2 linked lists
     ListNode_1 = ListNode_handle()
     l1 = ListNode()
-    l1_list = [1,8,3]
+    l1_list = [2,4,3]
     for i in l1_list:
         l1 = ListNode_1.add(i)
 
     ListNode_2 = ListNode_handle()
     l2 = ListNode()
-    l2_list = [9]
+    l2_list = [5,6,4]
     for i in l2_list:
         l2 = ListNode_2.add(i)
     #reverse 2 linked lists
@@ -152,5 +151,7 @@ if __name__ == "__main__":
 
     now1 = time.time()
     result1 = Solution1().addTwoNumbers(l1, l2)
+    result1_node = ListNode_handle()
+    result1_node.print_ListNode(result1)
     # print time.time()-now1
     # print result1

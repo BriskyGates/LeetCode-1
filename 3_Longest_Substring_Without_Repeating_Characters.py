@@ -7,28 +7,27 @@ This program is free software; you can redistribute it and/or modify
 
 """
 
-# class Solution(object):
-#     def lengthOfLongestSubstring(self, s):
-#         """
-#         :type s: str
-#         :rtype: int
-#         """
 class Solution(object):
-    def twoSum(self, nums, target):
-        if len(nums) <= 1:
-            return False
-        buff_dict = {}
-        for i in range(len(nums)):
-            if nums[i] in buff_dict:
-                print i, nums[i]
-                print buff_dict
-                return [buff_dict[nums[i]], i]
+    def lengthOfLongestSubstring(self, s):
+        """
+        :type s: str
+        :rtype: int
+        """
+        temp = result = ''
+        for i in s:
+            if i not in temp:
+                temp += i
             else:
-                print i, target - nums[i]
-                buff_dict[target - nums[i]] = i
+                index = temp.index(i)
+                temp = temp[index+1:] + i
+            if len(result) < len(temp):
+                result = temp
+            print temp, result
+        return len(result)
+
 
 
 if __name__ == "__main__":
     string = "abcabcbb"
-    result = Solution().twoSum([1,4,3,5,2,6], 6)
+    result = Solution().lengthOfLongestSubstring(string)
     print result
