@@ -30,7 +30,7 @@ class ListNode_handle:
 
     def print_ListNode(self, node):
         while node:
-            print '\nnode: ', node, ' value: ', node.val, ' next: ', node.next
+            # print '\nnode: ', node, ' value: ', node.val, ' next: ', node.next
             node = node.next
 
 
@@ -52,14 +52,8 @@ class ListNode_handle:
             nodelist = nodelist.next
         return list
 
-
 class Solution(object):
     def addTwoNumbers(self, l1, l2):
-        """
-        :type l1: ListNode
-        :type l2: ListNode
-        :rtype: ListNode
-        """
         global carry
         carry = False
         result_handle = ListNode_handle()
@@ -104,27 +98,33 @@ class Solution(object):
             result_list.append(1)
             result = result_handle.add(1)
             result = result_handle._reverse(result)
-        result_handle.print_ListNode(result)
+        # result_handle.print_ListNode(result)
         return result_list
 
+class ListNode1(object):
+    def __init__(self,x):
+        self.val = x
+        self.next = None
 
 class Solution1:
 # @return a ListNode
-def addTwoNumbers(self, l1, l2):
-    carry = 0
-    root = n = ListNode(0)
-    while l1 or l2 or carry:
-        v1 = v2 = 0
-        if l1:
-            v1 = l1.val
-            l1 = l1.next
-        if l2:
-            v2 = l2.val
-            l2 = l2.next
-        carry, val = divmod(v1+v2+carry, 10)
-        n.next = ListNode(val)
-        n = n.next
-    return root.next
+    def addTwoNumbers(self, l1, l2):
+        carry = 0
+        root = n = ListNode1(0)
+        print 'root: ', root
+        while l1 or l2 or carry:
+            v1 = v2 = 0
+            if l1:
+                v1 = l1.val
+                l1 = l1.next
+            if l2:
+                v2 = l2.val
+                l2 = l2.next
+            carry, val = divmod(v1+v2+carry, 10)
+            n.next = ListNode1(val)
+            n = n.next
+            print 'root: ',root
+        return root.next
 
 if __name__ == "__main__":
     # creat 2 linked lists
@@ -143,14 +143,14 @@ if __name__ == "__main__":
     l1 = ListNode_1._reverse(l1)
     l2 = ListNode_2._reverse(l2)
 
-    ListNode_1.print_ListNode(l1)
+    # ListNode_1.print_ListNode(l1)
     #get result
     now = time.time()
     result = Solution().addTwoNumbers(l1, l2)
-    print time.time()-now
-    print result
+    # print time.time()-now
+    # print result
 
     now1 = time.time()
-    result = Solution1().addTwoNumbers(l1, l2)
-    print time.time()-now
-    print result
+    result1 = Solution1().addTwoNumbers(l1, l2)
+    # print time.time()-now1
+    # print result1
